@@ -1,0 +1,1 @@
+print("Mansee Gupta ke dimag me kuch gadbad hai!")
