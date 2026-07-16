@@ -22,7 +22,7 @@
 			"com.tldraw.shape.bookmark": 2,
 			"com.tldraw.shape.draw": 5,
 			"com.tldraw.shape.geo": 11,
-			"com.tldraw.shape.note": 12,
+			"com.tldraw.shape.note": 13,
 			"com.tldraw.shape.line": 5,
 			"com.tldraw.shape.frame": 1,
 			"com.tldraw.shape.arrow": 8,
@@ -237,9 +237,9 @@
 			"typeName": "shape"
 		},
 		{
-			"x": 359.5889610349457,
-			"y": -490.3062292730017,
-			"z": 1,
+			"x": 860.8636718308999,
+			"y": -1064.4661637562278,
+			"z": 0.6960402543478923,
 			"meta": {},
 			"id": "camera:page:page",
 			"typeName": "camera"
@@ -541,12 +541,12 @@
 			"typeName": "shape"
 		},
 		{
-			"editingShapeId": null,
+			"editingShapeId": "shape:4A8MGm9xy86jwiyvlRoTx",
 			"croppingShapeId": null,
 			"selectedShapeIds": [
-				"shape:_FT4XcvwL_li_bjzqM02M"
+				"shape:4A8MGm9xy86jwiyvlRoTx"
 			],
-			"hoveredShapeId": null,
+			"hoveredShapeId": "shape:4A8MGm9xy86jwiyvlRoTx",
 			"erasingShapeIds": [],
 			"hintingShapeIds": [],
 			"focusedGroupId": null,
@@ -554,6 +554,125 @@
 			"id": "instance_page_state:page:page",
 			"pageId": "page:page",
 			"typeName": "instance_page_state"
+		},
+		{
+			"x": -551.9734910446899,
+			"y": 1449.5744304922744,
+			"rotation": 0,
+			"isLocked": false,
+			"opacity": 1,
+			"meta": {},
+			"id": "shape:4A8MGm9xy86jwiyvlRoTx",
+			"type": "text",
+			"props": {
+				"color": "black",
+				"size": "m",
+				"w": 948.765625,
+				"font": "draw",
+				"textAlign": "start",
+				"autoSize": true,
+				"scale": 1,
+				"richText": {
+					"type": "doc",
+					"attrs": {
+						"dir": "auto"
+					},
+					"content": [
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"marks": [
+										{
+											"type": "link",
+											"attrs": {
+												"href": "http://var.py",
+												"target": "_blank",
+												"rel": "noopener noreferrer nofollow",
+												"class": null
+											}
+										}
+									],
+									"text": "var.py"
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "\t.py file ko pt anhi chlega ki ye kisi ki file h mtlb ki python ya java ki file h "
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "kabhi bi folder ready kroige to usme aap log space nhi denge "
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "ram ka pura  (ramkapura) => Folder"
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							},
+							"content": [
+								{
+									"type": "text",
+									"text": "kbhi folder .py "
+								}
+							]
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							}
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							}
+						},
+						{
+							"type": "paragraph",
+							"attrs": {
+								"dir": "auto"
+							}
+						}
+					]
+				}
+			},
+			"parentId": "page:page",
+			"index": "aHPKr",
+			"typeName": "shape"
 		},
 		{
 			"x": -144.01602402322698,
@@ -749,10 +868,7 @@
 		{
 			"followingUserId": null,
 			"opacityForNextShape": 1,
-			"stylesForNextShape": {
-				"tldraw:color": "light-violet",
-				"tldraw:geo": "rectangle"
-			},
+			"stylesForNextShape": {},
 			"brush": null,
 			"scribbles": [],
 			"cursor": {
@@ -766,8 +882,8 @@
 			"screenBounds": {
 				"x": 0,
 				"y": 0,
-				"w": 1381.6666259765625,
-				"h": 785.8333129882812
+				"w": 1572,
+				"h": 966
 			},
 			"insets": [
 				false,
@@ -782,7 +898,7 @@
 			"isChatting": false,
 			"highlightedUserIds": [],
 			"isFocused": true,
-			"devicePixelRatio": 1.2000000476837158,
+			"devicePixelRatio": 1,
 			"isCoarsePointer": false,
 			"isHoveringCanvas": true,
 			"openMenus": [],
