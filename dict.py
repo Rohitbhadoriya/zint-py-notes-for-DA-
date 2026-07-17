@@ -91,4 +91,23 @@ sugar_content = kitchen["Sugar"]  # "1 kg white sugar"
 print(sugar_content)
 
 # What is mutuable 
-# Mutuabkle means you can chnage/ modify the after creation 
+# Mutuable means you can chnage/ modify the after creation 
+
+
+# Dicitionaries Mutuabel 
+student_name = {
+    "name":"Deeksha",
+    "age":20
+}
+print("Whole data print:", student_name)
+
+
+# Change exisiting value 
+student_name["age"] = 25
+print("after update:",student_name)
+
+student_name["city"] = "Gwalior"
+print("Second Update :", student_name)
+
+del student_name["city"]
+print("Third Update :", student_name)
