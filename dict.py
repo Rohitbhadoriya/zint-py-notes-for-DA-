@@ -111,3 +111,21 @@ print("Second Update :", student_name)
 
 del student_name["city"]
 print("Third Update :", student_name)
+
+print(len(student_name))
+xx = student_name.get("age")
+print(xx)
+
+print(student_name["name"],student_name["age"])
+yz = student_name.keys()
+print(yz)
+
+mereko = "mein hu deeksha"
+mujheto = mereko
+print(mujheto)
+mereko = "kuch kuch hota hai"
+print(mereko)
+print(mujheto)
+
+
+

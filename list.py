@@ -246,7 +246,7 @@ ttbills = [450,1200,899,2340,675,1500]
 category = ["Low" if bill < 1000 else "High" for bill in ttbills ]
 print(category)
 suqrared = [x**2 for x in range(10)]
-print(suqrared)
+print(suqrared) 
 sqt = [y**2 for y in [2,4,7,9,11,22,33,44,55]]
 print(sqt)
 
@@ -268,7 +268,8 @@ tanishk = []
 for gupta in guptajibill:
     if gupta > 800:
         tanishk.append(gupta + 30)
-print(tanishk)
+print("Hello Ji mein hu makar", tanishk)
+print("Hello Ji mein hu makar", guptajibill)
 
 # even number 
 even = [x for x in range(20) if x % 2 == 0]
