@@ -317,7 +317,38 @@ zudio_bills = [100,200,300,400,500,600]
 # Ye infinite loop hoga kyu ki hum list 
 # ke andar hi iterate kr rhe h or usi list mein append kr rhe h
 
+loop1 = [101,102,376,407,307,302,420,11,12,13,14]
+# for ram in loop1:
+#     ram.append(ram + 100)
+# print(loop1)
 
+
+
+
+for i in range(len(loop1)):
+    loop1[i] = loop1[i] + 100
+    # print(loop1)
+
+print(loop1)
+
+
+
+
+for ram in loop1[:]:     
+    loop1.append(ram + 100)
+
+print(loop1)
+
+
+
+
+# loop1 = [101, 102, 376, 407, 307, 302, 420, 11, 12, 13, 14]
+
+# while True:
+#     for i in range(len(loop1)):
+#         loop1[i] = loop1[i] + 100
+
+#     print(loop1)
 
 
 # String Methods
@@ -336,7 +367,7 @@ zudio_bills = [100,200,300,400,500,600]
 # 10. isdigit(): Returns True if all characters in a
 
 # strip
-var_name = "                 Hello, World!            "
+var_name = "                 Hello, World!"
 # print(var_name)
 # print(var_name.strip())
 var_name2 = var_name.strip()

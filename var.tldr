@@ -21,7 +21,7 @@
 			"com.tldraw.shape.text": 4,
 			"com.tldraw.shape.bookmark": 2,
 			"com.tldraw.shape.draw": 5,
-			"com.tldraw.shape.geo": 11,
+			"com.tldraw.shape.geo": 12,
 			"com.tldraw.shape.note": 13,
 			"com.tldraw.shape.line": 5,
 			"com.tldraw.shape.frame": 1,
@@ -156,7 +156,9 @@
 							"type": "paragraph"
 						}
 					]
-				}
+				},
+				"flipX": false,
+				"flipY": false
 			},
 			"parentId": "page:page",
 			"index": "aGnzB",
@@ -193,7 +195,9 @@
 							"type": "paragraph"
 						}
 					]
-				}
+				},
+				"flipX": false,
+				"flipY": false
 			},
 			"parentId": "page:page",
 			"index": "a5yVI",
@@ -230,16 +234,18 @@
 							"type": "paragraph"
 						}
 					]
-				}
+				},
+				"flipX": false,
+				"flipY": false
 			},
 			"parentId": "page:page",
 			"index": "a9VCv",
 			"typeName": "shape"
 		},
 		{
-			"x": 860.8636718308999,
-			"y": -1064.4661637562278,
-			"z": 0.6960402543478923,
+			"x": 337.77785495411473,
+			"y": 307.8945970240894,
+			"z": 0.8290302032750156,
 			"meta": {},
 			"id": "camera:page:page",
 			"typeName": "camera"
@@ -256,7 +262,7 @@
 			"props": {
 				"color": "black",
 				"size": "m",
-				"w": 907,
+				"w": 880.2502128400606,
 				"font": "draw",
 				"textAlign": "start",
 				"autoSize": true,
@@ -287,7 +293,7 @@
 							"content": [
 								{
 									"type": "text",
-									"text": "vairbae ke 2 top type ek lOcal varibale and Global Variable "
+									"text": "vairbale ke 2 top type ek lOcal varibale and Global Variable "
 								}
 							]
 						},
@@ -361,7 +367,7 @@
 											"content": [
 												{
 													"type": "text",
-													"text": "pythone mien kuch keywords reserved hai if, for, class, True, False etc."
+													"text": "python mien kuch keywords reserved hai if, for, class, True, False etc."
 												}
 											]
 										}
@@ -541,12 +547,12 @@
 			"typeName": "shape"
 		},
 		{
-			"editingShapeId": "shape:4A8MGm9xy86jwiyvlRoTx",
+			"editingShapeId": "shape:kgbnqkyfSaZM4gDfAdGmm",
 			"croppingShapeId": null,
 			"selectedShapeIds": [
-				"shape:4A8MGm9xy86jwiyvlRoTx"
+				"shape:kgbnqkyfSaZM4gDfAdGmm"
 			],
-			"hoveredShapeId": "shape:4A8MGm9xy86jwiyvlRoTx",
+			"hoveredShapeId": "shape:kgbnqkyfSaZM4gDfAdGmm",
 			"erasingShapeIds": [],
 			"hintingShapeIds": [],
 			"focusedGroupId": null,
@@ -753,7 +759,9 @@
 							]
 						}
 					]
-				}
+				},
+				"flipX": false,
+				"flipY": false
 			},
 			"parentId": "page:page",
 			"index": "aAlJU",
@@ -790,7 +798,9 @@
 							"type": "paragraph"
 						}
 					]
-				}
+				},
+				"flipX": false,
+				"flipY": false
 			},
 			"parentId": "page:page",
 			"index": "a7To2",
@@ -859,7 +869,9 @@
 							"type": "paragraph"
 						}
 					]
-				}
+				},
+				"flipX": false,
+				"flipY": false
 			},
 			"parentId": "page:page",
 			"index": "aEWEj",
@@ -882,8 +894,8 @@
 			"screenBounds": {
 				"x": 0,
 				"y": 0,
-				"w": 1572,
-				"h": 966
+				"w": 984.1666259765625,
+				"h": 644.1666259765625
 			},
 			"insets": [
 				false,
@@ -898,7 +910,7 @@
 			"isChatting": false,
 			"highlightedUserIds": [],
 			"isFocused": true,
-			"devicePixelRatio": 1,
+			"devicePixelRatio": 2.4000000953674316,
 			"isCoarsePointer": false,
 			"isHoveringCanvas": true,
 			"openMenus": [],
@@ -1064,7 +1076,9 @@
 							"type": "paragraph"
 						}
 					]
-				}
+				},
+				"flipX": false,
+				"flipY": false
 			},
 			"parentId": "page:page",
 			"index": "aFhuA",
