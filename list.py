@@ -94,7 +94,6 @@ print(last_order)
 # kyu ki list andar se array hai . Index O remove karne ke baad
 # sare elements ko ek position left shift krni pda - (o)n operation 
 
-
 # clear 
 # poorilist empty kar deta hai 
 # jab sara data reset krna ho tab hum iska use krte hai 

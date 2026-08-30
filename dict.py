@@ -4,10 +4,9 @@
 
 
 phonebook = {
-    "Hitler Mom": 9987654321,
-    "Father Shab": 8889968914,
-    "Mitr": 2345678901,
-
+    "Mum": 9126775106,
+    "Dad": 8744097045,
+    "Me": 9533725861,
 }
 print(phonebook)
 
@@ -38,8 +37,8 @@ print(dost["Kanchan"]["age"])
 # When to use dict
 
 school_students = {
-    "name":"deeksha Gupta",
-    "age": 78
+    "name":"Shubh Sharma",
+    "age":48, 
 }
 
 user_data={
@@ -61,7 +60,6 @@ gropued_data = {
     "fruits":{"apple","banana","grapess"},
     "veggies":{"carrot","raddish"}
 }
-
 
 # Don't use Dict
 fruits = ["apple","grappes","Papaya"]
@@ -185,7 +183,7 @@ ss123456 = dict(zip(keys,values))
 print(keys)
 print(ss123456)
 
-# From Genrator Expression 
+#  From Genrator Expression 
 squares = dict((x,x**2)for x in range(0,5))
 print(squares)
 
@@ -211,7 +209,7 @@ print("emo_dic", emp_dict)
 result12 = dict.fromkeys("ABC",0)
 print(result12)
 
-# From A Rnage 
+# From A Range 
 result13 = dict.fromkeys(range(1,10),"Empty")
 print(result13)
 
@@ -240,8 +238,8 @@ print(odd_squres)
 # key-value pairs as a list of tuples. 
 # This method is primarily used to loop through a dictionary and 
 # access both the keys and their corresponding values simultaneously.
-#  Syntax and Return ValueSyntax: dictionary.items()Parameters:
-#  NoneReturn Type: A dynamic dict_items view object. 
+# Syntax and Return ValueSyntax: dictionary.items()Parameters:
+# NoneReturn Type: A dynamic dict_items view object. 
 # This view automatically updates if the underlying dictionary changes.
 prices = {"apple":100, "banana":50, "orange":45, "grapess": 120}
 discounted = {item: price * 0.9 for item, price in prices.items()}
@@ -256,7 +254,6 @@ swapped = {value: papakipari for papakipari,value in original1.items()}
 print(swapped)
 
 # Form the list wuth ZIP
-
 # zip defination
 # The Python zip() function takes multiple iterables (like lists, tuples, or strings) and aggregates 
 # their corresponding elements into an iterator of tuples. 
@@ -326,7 +323,7 @@ print(nested)
 
 # Custom Default Factory
 # def default_factory():
-#     return{"count":1,"items":[]}
+# return{"count":1,"items":[]}
 # custom = defaultdict(default_factory)
 # custom["fruits"]["items"].append("apple")
 # custom["fruits"]["items"].append("banana")
@@ -337,8 +334,8 @@ print(nested)
 
 # Creatinhg From Other Data Types
 # From list of lists
-convertto_dict = dict([["name","Deeksha"],["age",25],["city","Gwalior"]])
-print(convertto_dict)
+convert_dict = dict([["name","Deeksha"],["age",25],["city","Gwalior"]])
+print(convert_dict)
 # From list of tuples
 convert_tuples = [("name","Falguni"),("age",25),("city","Gwalior")]
 change_dict  = dict(convert_tuples)
@@ -391,13 +388,13 @@ print(users_data1["address"]["zip"])
 # key might be missing (user input, API Data)
 # Production code (unless guranted)
 # you want to handle missing keys gracefully (default values, etc.)
-
+ 
 
 # 4.2 Method 2: .get() Method Safe Access
 # The .get(key,default = None) method returns the value for the key
 # if its exists otherwise returns the default value (None if not specified)
 # It never raises akeyerror
-
+ 
 student_data1 = {
     
     "name":"Annu Sharma Pagal",
@@ -409,9 +406,58 @@ print(annu_city)
 # Basic usage: Missing key returns None
 annu_phone = student_data1.get("phone")
 print(annu_phone)
-# With default value
+
+# with default key  
+annu_phonedevalur = student_data1.get("phone","Not Available")
+print(annu_phonedevalur)
+
+# with default for existing key 
+annu_city1 = student_data1.get("city","Not Available")
+print(annu_city1)
+
+# Safe nested access (Chained.get())
+user_data = {
+
+    "id":101,
+    "name":"Shivam",
+    "email":"shivam@gmail.com",
+    "address":{
+        "street":"123 Main St",
+        "city":"London",
+        "zip":12345
+    }
+}
+
+usercity = user_data.get("address",{}).get("city")
+print(usercity)
+
+# address is missing 
+usercity1 = user_data.get("adress1",{}).get("city","Not Available")
+print(usercity1)
 
 
+# Lambda Function
 
+def get_address():
+    print("This is a normal function")
+    return{"city":"Delhi"}
+usercity1 = user_data.get("address",get_address())
+print(usercity1)
 
+# 4.3 Method 3: .setdefault() Method
+# The .setdefault (key,default = None) method return the 
+# value of the key if it exists. If the key 
+# doesn't exists, it sets the key of the default value and return it
 
+user_data2 = {
+    "name":"Vijay Singh Bhadouriya",
+    "age": 33,
+
+}
+# Existing key , Return and value doesn't change 
+name1 = user_data2.setdefault("name","please enter your name")
+print(name1) # Output : Vijay Singh Bhadouriya
+print(user_data2) # Output : {'name': 'Vijay Singh Bhadouriya', 'age': 33}
+
+# Missing key 
+age1 = user_data2.setdefault("age",0)
