@@ -249,7 +249,7 @@ def log_errors(error_level, *msg):
     print(f"[{error_level}]")
     for msgs in msg:
         print(f"{msgs}")
-log_errors("crictical", "DB Down","Retry Failed","Sysytem unstable") 
+log_errors("critical", "DB Down","Retry Failed","Sysytem unstable") 
 
 
 # **kwargs Unknown Number of keyword arguments
@@ -278,7 +278,7 @@ user1 = create_user_profile(name="Rohit", age=25, city="Delhi")
 print(user1)  # {'name': 'Rohit', 'age': 25, 'city': 'Delhi'}
 # **kwargs ek dict banata hai 
 # sab keyword arguments us dict mein ate hai
-# IOnternal Woprking
+# Internal Working
 # Python sab extra keyword arguments uthata hai
 # Unko ek dictionary mein pack krta hai
 # app kwrgs.item() , kwrgs.get('key') use kr skte ho
@@ -291,9 +291,9 @@ print(user1)  # {'name': 'Rohit', 'age': 25, 'city': 'Delhi'}
 # jab dyanmic attributes add krne ho 
 
 # Kb use na krein 
-# jab parameteres secific ho mtlb ki define ho 
-# jab type saftey chaiye ho 
-# jab documnetation imp ho 
+# jab parameteres specific ho mtlb ki define ho 
+# jab type saftey chahiye ho 
+# jab documentation imp ho 
 
 # Positional -  only paramters
 # ========== CODE ==========
@@ -565,7 +565,7 @@ print("mein ek return hu", add_numbers(4,5))
 
 # return Keyword
 # Function se output bhejta hai 
-# Jahna function call kiya tha wha value bhejta hai 
+# Jaha function call kiya tha wha value bhejta hai 
 # return ke badd function excecution stop ho jata hai 
 # Agr return nahi likha toh None return hota hai
 
@@ -577,7 +577,7 @@ print("mein ek return hu", add_numbers(4,5))
 #  side effect 
 # Debugging ke liye 
 # Return 
-# Vlaue provide kkrta hai 
+# Value provide krta hai 
 # Use kar skte ho 
 # Actual output
 # Production code mein
@@ -594,3 +594,856 @@ def get_user_info():
     return "Rohit" ,20, "Delhi"
 name,age,city = get_user_info()
 print(name,age,city)
+
+# 3. Dictionary return
+def get_user_profile():
+    return {
+        "name": "Rohit",
+        "age": 25,
+        "city": "Delhi",
+        "active": True
+    }
+profile = get_user_profile()
+print(profile["name"])  # Rohit
+
+
+# 4. List return
+def get_top_scores():
+    return [95, 88, 76, 92, 84]
+
+scores = get_top_scores()
+print(scores[0])  # 95
+
+# 5. None return (no return value)
+def log_message(msg):
+    print(f"LOG: {msg}")
+    return  # None return
+
+result = log_message("Hello")
+print(result)  # None
+
+
+# 6. Boolean return
+def is_adult(age):
+    return age >= 18
+
+print(is_adult(20))  # True
+print(is_adult(15))  # False
+
+
+
+
+# ========== EARLY RETURN (Guard Clauses) ==========
+
+def process_order(order_id):
+    """
+    Early return use karke validation.
+    """
+    # Validation 1
+    if not order_id:
+        return {"error": "Order ID required"}  # Early return
+    
+    # Validation 2
+    if order_id <= 0:
+        return {"error": "Invalid order ID"}  # Early return
+    
+    # Validation 3
+    order = fetch_order(order_id)
+    if not order:
+        return {"error": "Order not found"}  # Early return
+    
+    # Main logic - tab hi execute hogi jab sab valid hai
+    processed = process_order_data(order)
+    return {"status": "success", "data": processed}
+
+
+
+# 3.2 Return vs Print - INDUSTRY DECISION FRAMEWORK
+
+# BAD - Print in function (can't use value)
+def calculate_total_price(items):
+    total = 0
+    for item in items:
+        total += item["price"] * item["qty"]
+    print(total)  # 🔴 Print - value use nahi kar sakte
+
+# GOOD - Return (can use value)
+def calculate_total_price(items):
+    total = 0
+    for item in items:
+        total += item["price"] * item["qty"]
+    return total  # 🟢 Return - value use kar sakte ho
+
+
+
+# PRINT (Display Only)                    RETURN (Provide)   
+               
+#     Screen pe dikhana                         Value dena           
+#     Debugging                                Use karna            
+#     Logging                                  Store karna          
+#     Progress show karna                      Calculate karna      
+#  User ko batana                           Pass to other funcs  │   • REPL/Testing                            • API responses  
+
+#  GOLDEN RULE: 
+# Functions should RETURN values, not PRINT them."
+# If you need to display, print the RETURNED value 
+# Functions = Computation (return)  
+# Print = Display (use outside function)   
+
+
+# BAD - Print in function
+def get_user_data(user_id):
+    user = db.fetch_user(user_id)
+    print(user)  # Can't use this data anywhere!
+    # Can't do anything else with the user data
+
+
+    #  GOOD - Return
+def get_user_data(user_id):
+    user = db.fetch_user(user_id)
+    return user  # Can use this data!
+
+
+# Using the good function
+user_data = get_user_data(101)  # Store
+print(f"User: {user_data['name']}")  # Display when needed
+process_user(user_data)  # Process
+send_email(user_data["email"])  # Use in other functions
+
+#  PART 4: SCOPE - VARIABLE KAHAN REHTI HAI
+# 4.1 Local vs Global Scope - BILKUL SIMPLE
+
+# ========== CODE ==========
+
+# GLOBAL VARIABLE - sab jagah accessible
+shop_name = "Rohit's Store"  # Global scope
+tax_rate = 0.18              # Global scope
+
+def calculate_total(items):
+    """
+    Items ka total calculate karta hai.
+    """
+    subtotal = 0  # LOCAL variable - sirf function ke andar
+    for item in items:
+        subtotal += item["price"] * item["qty"]
+    
+    tax = subtotal * tax_rate  # Global variable access kar raha hai
+    total = subtotal + tax
+    return total
+
+# ========== LINE-BY-LINE EXPLANATION ==========
+
+"""
+SCOPE (Variable ki visibility):
+
+GLOBAL SCOPE:
+- Function ke BAHAR defined variables
+- Sab functions access kar sakte hain
+- Program ke end tak exist karti hain
+- Example: shop_name, tax_rate
+
+ LOCAL SCOPE:
+- Function ke ANDAR defined variables
+- Sirf us function ke andar accessible
+- Function khatam hote hi delete ho jati hain
+- Example: subtotal, tax, total
+
+IMPORTANT:
+- Python function ke andar variable dhundhti hai:
+  1. Pehle LOCAL scope mein
+  2. Phir ENCLOSING scope mein (nested functions)
+  3. Phir GLOBAL scope mein
+  4. Phir BUILT-IN scope mein
+
+ERROR:
+def wrong_function():
+    print(shop_name)  #  Global access - OK
+    shop_name = "New Store"  #  Local variable ban raha hai
+    # Python confuse ho jata hai - UnboundLocalError
+
+ SOLUTION:
+def correct_function():
+    global shop_name  # "Mai global use kar raha hoon"
+    print(shop_name)  #  Global access
+    shop_name = "New Store"  #  Global modify
+"""
+
+# ========== INDUSTRY EXAMPLE ==========
+
+#  COMPANY: Configuration file
+# config.py
+DATABASE_URL = "postgresql://localhost:5432/mydb"
+API_KEY = "sk-1234567890"
+MAX_RETRIES = 3
+TIMEOUT = 30
+DEBUG = True
+
+# main.py
+def connect_to_db():
+    """Database connection function"""
+    # Using global configuration
+    print(f"Connecting to: {DATABASE_URL}")
+    print(f"Timeout: {TIMEOUT}s")
+    # Connection logic
+    return {"status": "connected"}
+
+def fetch_data(query):
+    """Data fetch karna"""
+    # Using global config
+    print(f"Max retries: {MAX_RETRIES}")
+    # Fetch logic
+    
+def set_debug_mode(enabled):
+    """Debug mode set karna"""
+    global DEBUG  # Need to modify global
+    DEBUG = enabled
+    print(f"Debug mode: {DEBUG}")
+
+# Main execution
+print(f"Starting app... ({DATABASE_URL})")
+db = connect_to_db()
+fetch_data("SELECT * FROM users")
+set_debug_mode(False)
+
+
+
+# 4.2 Global Keyword - Global Variable Modify Karna
+
+
+# ========== CODE ==========
+
+# Global variable
+counter = 0
+config = {"debug": True, "version": "1.0"}
+
+def increment_counter():
+    """
+    Global counter increment karta hai.
+    """
+    global counter  # ← "Mai global counter use kar raha hoon"
+    counter += 1
+    print(f"Counter: {counter}")
+
+def update_config(key, value):
+    """
+    Global config update karta hai.
+    """
+    global config  # ← "Mai global config use kar raha hoon"
+    config[key] = value
+    print(f"Config updated: {key} = {value}")
+
+# ========== USE KARNA ==========
+increment_counter()  # Counter: 1
+increment_counter()  # Counter: 2
+increment_counter()  # Counter: 3
+
+update_config("debug", False)   # Config updated: debug = False
+update_config("version", "2.0") # Config updated: version = 2.0
+
+print(counter)  # 3
+print(config)   # {'debug': False, 'version': '2.0'}
+
+# ========== LINE-BY-LINE EXPLANATION ==========
+
+"""
+global KEYWORD:
+
+KYA KARTA HAI:
+- Function ke andar global variable modify karne ke liye
+- Python ko batata hai ki "Naya variable mat banao, global use karo"
+
+KYA HOGA BINA global KE:
+counter = 0
+
+def increment_counter():
+    counter += 1  #  UnboundLocalError!
+    # Python sochta hai: "counter local hai? par value toh nahi hai"
+
+KYA HOGA global KE SAATH:
+def increment_counter():
+    global counter  # "Mai global wala counter use kar raha hoon"
+    counter += 1    # Works!
+
+WARNING:
+- global ko HAMESHA function ke start mein likho
+- Zyada global variables mat banao (tight coupling)
+- Global variables test karna mushkil
+- Industrial code mein global kam use karo
+"""
+
+# ========== INDUSTRY EXAMPLE ==========
+
+#  Analytics counter
+total_requests = 0
+successful_requests = 0
+failed_requests = 0
+
+def track_request(success=True):
+    """
+    Request track karna.
+    """
+    global total_requests, successful_requests, failed_requests
+    
+    total_requests += 1
+    
+    if success:
+        successful_requests += 1
+    else:
+        failed_requests += 1
+    
+    print(f"📊 Stats: Total={total_requests}, Success={successful_requests}, Failed={failed_requests}")
+
+# Simulate requests
+track_request(True)   # Stats: Total=1, Success=1, Failed=0
+track_request(True)   # Stats: Total=2, Success=2, Failed=0
+track_request(False)  # Stats: Total=3, Success=2, Failed=1
+track_request(True)   # Stats: Total=4, Success=3, Failed=1
+
+
+
+# Nonlocal Keyword - Enclosing Scope Modify Karna
+
+# ========== CODE ==========
+
+def outer_function():
+    """
+    Outer function - counter encloses inner function.
+    """
+    counter = 0  # Enclosing scope variable
+    
+    def inner_function():
+        """
+        Inner function - outer function ke variable modify karta hai.
+        """
+        nonlocal counter  # "Mai enclosing wala counter use kar raha hoon"
+        counter += 1
+        print(f"Inner counter: {counter}")
+    
+    inner_function()  # Inner counter: 1
+    inner_function()  # Inner counter: 2
+    inner_function()  # Inner counter: 3
+    
+    print(f"Outer counter: {counter}")  # Outer counter: 3
+    
+    return inner_function
+
+# ========== USE KARNA ==========
+func = outer_function()
+func()  # Inner counter: 4
+func()  # Inner counter: 5
+
+# ========== LINE-BY-LINE EXPLANATION ==========
+
+# """
+# nonlocal KEYWORD:
+
+# KYA KARTA HAI:
+# - Nested function mein enclosing function ke variable modify karta hai
+# - Outer function ke variable ko inner function mein change karta hai
+
+def outer():
+    counter = 0
+    def inner():
+        counter += 1  #  UnboundLocalError!
+    inner()
+
+# KYA HOGA nonlocal KE SAATH:
+def outer():
+    counter = 0
+    def inner():
+        nonlocal counter  # "Mai enclosing wala use kar raha hoon"
+        counter += 1      #  Works!
+    inner()
+
+
+# WHEN TO USE:
+#  Nested functions mein
+#  Decorators mein
+#  Closures mein
+#  Function mein state maintain karna ho
+
+# WHEN NOT TO USE:
+#  Simple functions mein
+#  Jab avoid kar sakte ho (use parameters instead)
+#  Zyada nested functions mein (confusing)
+
+# 5.1 Lambda Kya Hai? - SIMPLE EXPLANATION
+
+
+# REGULAR FUNCTION: 
+# def square(x):             
+#     return x ** 2
+# def keyword use karta hai
+# Name hota hai
+# Multiple statements
+# Return explicitly 
+# Documentation daal sakte
+# Error handling kar sakte 
+# Zyada complex logic  
+
+
+# LAMBDA 
+# lambda x: x ** 2
+# def nahi use karta
+# Anonymous (koi name nahi)
+# Sirf ek expression
+# Auto return
+# Documentation nahi
+# Error handling nahi
+# Simple logic
+
+# KYA HAI LAMBDA:
+# Ek "anonymous function" (nam nahi hai)
+# Short, one-line functions ke liye
+# Expression automatically return hota hai
+# Function ko function pass karte waqt use hota hai
+
+# KAB USE KAREIN:
+# Short one-line functions
+# map, filter, sorted ke saath
+# Function argument ke roop mein
+# Quick operations
+
+# KAB USE NA KAREIN:
+# Complex logic ke liye
+# Multiple statements ke liye
+# Jab documentation chahiye
+# Jab reusable function chahiye
+
+# ========== CODE ==========
+
+# Regular function
+def square(x):
+    """Number ka square nikalta hai"""
+    return x ** 2
+
+# Lambda function (anonymous)
+square_lambda = lambda x: x ** 2
+
+# ========== USE KARNA ==========
+print(square(5))         # 25 - Regular function
+print(square_lambda(5))  # 25 - Lambda function
+
+# ========== LINE-BY-LINE EXPLANATION ==========
+
+"""
+lambda x: x ** 2
+│       │
+│       └─── Expression (automatically return ho jata hai)
+└─── Parameters
+
+REGULAR FUNCTION vs LAMBDA:
+─────────────────────────────────────────────────
+REGULAR FUNCTION:            LAMBDA:
+─────────────────────────────────────────────────
+def square(x):               lambda x: x ** 2
+    return x ** 2
+│                           │
+- def keyword use karta hai  - def nahi use karta
+- Name hota hai              - Anonymous (koi name nahi)
+- Multiple statements         - Sirf ek expression
+- Return explicitly           - Auto return
+- Documentation daal sakte   - Documentation nahi
+- Error handling kar sakte   - Error handling nahi
+- Zyada complex logic         - Simple logic
+
+KYA HAI LAMBDA:
+- Ek "anonymous function" (nam nahi hai)
+- Short, one-line functions ke liye
+- Expression automatically return hota hai
+- Function ko function pass karte waqt use hota hai
+
+KAB USE KAREIN:
+ Short one-line functions
+map, filter, sorted ke saath
+Function argument ke roop mein
+Quick operations
+
+KAB USE NA KAREIN:
+ Complex logic ke liye
+ Multiple statements ke liye
+ Jab documentation chahiye
+ Jab reusable function chahiye
+"""
+
+# ========== REAL INDUSTRY EXAMPLES ==========
+
+# 1. SORTING WITH LAMBDA
+users = [
+    {"name": "Rohit", "age": 25, "salary": 50000},
+    {"name": "Priya", "age": 30, "salary": 70000},
+    {"name": "Amit", "age": 22, "salary": 45000},
+    {"name": "Neha", "age": 28, "salary": 65000}
+]
+
+# Age ke hisaab se sort
+sorted_by_age = sorted(users, key=lambda user: user["age"])
+print("Age wise:")
+for user in sorted_by_age:
+    print(f"  {user['name']}: {user['age']} years")
+
+# Salary ke hisaab se sort (descending)
+sorted_by_salary = sorted(users, key=lambda user: user["salary"], reverse=True)
+print("\nSalary wise (highest first):")
+for user in sorted_by_salary:
+    print(f"  {user['name']}: ₹{user['salary']}")
+
+# 2. FILTERING WITH LAMBDA
+numbers = [10, 15, 20, 25, 30, 35, 40, 45, 50]
+
+# Even numbers filter
+even_numbers = list(filter(lambda x: x % 2 == 0, numbers))
+print(f"\nEven numbers: {even_numbers}")
+
+# Numbers > 25
+greater_than_25 = list(filter(lambda x: x > 25, numbers))
+print(f"Numbers > 25: {greater_than_25}")
+
+# 3. MAPPING WITH LAMBDA
+prices = [100, 200, 300, 400, 500]
+
+# 10% discount apply
+discounted = list(map(lambda price: price * 0.9, prices))
+print(f"\nOriginal: {prices}")
+print(f"Discounted: {discounted}")
+
+# 4. REDUCING WITH LAMBDA
+from functools import reduce
+
+# Product of all numbers
+product = reduce(lambda x, y: x * y, [1, 2, 3, 4, 5])
+print(f"\nProduct: {product}")  # 120
+
+# 5. DATA TRANSFORMATION
+orders = [
+    {"id": 1, "items": [{"price": 100}, {"price": 200}]},
+    {"id": 2, "items": [{"price": 50}, {"price": 75}, {"price": 25}]},
+    {"id": 3, "items": [{"price": 300}]}
+]
+
+# Total of each order
+totals = list(map(
+    lambda order: sum(item["price"] for item in order["items"]),
+    orders
+))
+print(f"\nOrder totals: {totals}")
+
+# key=lambda kyu kiya?
+# Dekho, sorted() function ko batana padta hai ki "Kis basis pe sort karna hai?"
+# Bina key ke :
+# sorted(users)
+# Yeh error dega kyunki Python ko nahi pata ki tuple/list/dict ko kaise compare kare.
+
+# Why lambda
+# Lambda ek chhota, one-line function hai jo:
+# Har user leta hai (user)
+# Usme se "age" nikaalta hai (user["age"])
+# Yeh value sorting key ban jaati hai
+
+# Agar lambda nahi likhte toh?
+# def get_age(user):
+#     return user["age"]
+
+# sorted(users, key=get_age)
+# Lekin lambda short aur clean hai — ek hi baar use karna hai, toh alag function banane ki zaroorat nahi.
+
+
+
+
+
+
+# Lambda vs Regular Function - DECISION GUIDE
+
+"""
+======================================================================
+LAMBDA vs REGULAR FUNCTION - COMPLETE GUIDE (Simple Language)
+======================================================================
+
+YE SAMJHO: Function ek "kaam karne ka formula" hai
+- Regular function = Bada dabba (naam ke saath)
+- Lambda = Chhota dabba (bina naam ke)
+"""
+
+# ====================================================================
+# PART 1: BASIC DIFFERENCE (Sabse zaroori baat)
+# ====================================================================
+
+print("=" * 50)
+print("PART 1: BASIC DIFFERENCE")
+print("=" * 50)
+
+# REGULAR FUNCTION - Bada wala
+def square_regular(x):
+    """Number ka square nikalta hai"""
+    return x * x
+
+# LAMBDA - Chhota wala
+square_lambda = lambda x: x * x
+
+# Dono same kaam karte hain
+print("Regular function:", square_regular(5))  # 25
+print("Lambda function:", square_lambda(5))    # 25
+
+print("\n--- FARAK KYA HAI? ---")
+print("1. Regular ka naam hai 'square_regular'")
+print("2. Lambda ka naam nahi hai (anonymous)")
+print("3. Regular mein 'return' likhna padta hai")
+print("4. Lambda mein auto return hota hai")
+print("5. Regular mein documentation daal sakte ho")
+print("6. Lambda mein nahi daal sakte")
+
+# ====================================================================
+# PART 2: KAB KYA USE KAREIN? (Decision Guide)
+# ====================================================================
+
+print("\n" + "=" * 50)
+print("PART 2: KAB KYA USE KAREIN?")
+print("=" * 50)
+
+# SCENARIO 1: Simple kaam (Square)
+print("\n[SCENARIO 1] Simple kaam - Square nikaalna")
+print("-" * 40)
+
+#  Lambda - Best (1 line mein kaam ho gaya)
+square = lambda x: x ** 2
+print(" Lambda use karo:", square(5))
+
+# Regular - Overkill (zyada likhna pada)
+def square_regular2(x):
+    return x ** 2
+print(" Regular zaroorat se zyada hai")
+
+print(" DECISION: Lambda use karo (simple hai)")
+
+# SCENARIO 2: Complex logic (Zyada conditions)
+print("\n[SCENARIO 2] Complex logic - Multiple conditions")
+print("-" * 40)
+
+#  Lambda - Bahut mushkil (ghanshyam ho jaata hai)
+# process = lambda data: [item for item in data if item["status"] == "active" and item["age"] > 18 and item["salary"] > 50000]
+
+#  Regular - Clean (sabko samajh aata hai)
+def process_active_high_earners(data):
+    """Active users jo 18+ hain aur salary 50000 se zyada"""
+    result = []
+    for item in data:
+        if item["status"] == "active" and item["age"] > 18 and item["salary"] > 50000:
+            result.append(item)
+    return result
+
+# Test data
+test_data = [
+    {"name": "Rohit", "status": "active", "age": 25, "salary": 60000},
+    {"name": "Priya", "status": "active", "age": 30, "salary": 70000},
+    {"name": "Amit", "status": "inactive", "age": 22, "salary": 40000}
+]
+
+result = process_active_high_earners(test_data)
+print(" Regular function result:", result)
+
+print(" DECISION: Regular function use karo (complex hai)")
+
+# SCENARIO 3: Multiple statements (Zyada kaam)
+print("\n[SCENARIO 3] Multiple statements - Zyada kaam")
+print("-" * 40)
+
+#  Lambda - Possible hi nahi
+# process = lambda x: print(x); return x**2  #  Error
+
+#  Regular - Aaram se kaam karega
+def process_and_log(x):
+    print(f"  Processing: {x}")
+    result = x ** 2
+    print(f"  Result: {result}")
+    return result
+
+print(" Regular function:")
+result = process_and_log(5)
+
+print(" DECISION: Regular function use karo (multiple statements)")
+
+# SCENARIO 4: Quick inline use (map, filter, sorted)
+print("\n[SCENARIO 4] Quick inline use - map/filter/sorted")
+print("-" * 40)
+
+users = [
+    {"name": "Rohit", "age": 25},
+    {"name": "Priya", "age": 30},
+    {"name": "Amit", "age": 22}
+]
+numbers = [1, 2, 3, 4, 5]
+
+#  Lambda - Perfect (1 line mein kaam)
+users.sort(key=lambda user: user["age"])
+even_numbers = list(filter(lambda x: x % 2 == 0, numbers))
+doubled = list(map(lambda x: x * 2, numbers))
+
+print("Sorted users:", users)
+print("Even numbers:", even_numbers)
+print("Doubled numbers:", doubled)
+
+print(" DECISION: Lambda use karo (inline)")
+
+# ====================================================================
+# PART 3: INDUSTRY BEST PRACTICE (Real company mein kaise)
+# ====================================================================
+
+print("\n" + "=" * 50)
+print("PART 3: INDUSTRY BEST PRACTICE")
+print("=" * 50)
+
+employees = [
+    {"name": "Rohit", "age": 25, "salary": 50000, "dept": "Eng"},
+    {"name": "Priya", "age": 30, "salary": 70000, "dept": "HR"},
+    {"name": "Amit", "age": 22, "salary": 45000, "dept": "Sales"},
+    {"name": "Neha", "age": 28, "salary": 60000, "dept": "Eng"}
+]
+
+print("\n[BAD PRACTICE] Complex lambda - mat karo")
+print("-" * 40)
+print(" Yeh mat karo (bahut complicated):")
+print("   list(filter(lambda u: u['age'] > 25 and u['salary'] > 50000")
+print("   and u['dept'] in ['Eng', 'HR'], employees))")
+print("   → Kisi ko samajh nahi aayega")
+
+print("\n[GOOD PRACTICE] Regular function - karo")
+print("-" * 40)
+
+def is_eligible_employee(emp):
+    """Employee eligible hai ya nahi check karo"""
+    if emp["age"] <= 25:
+        return False
+    if emp["salary"] <= 50000:
+        return False
+    if emp["dept"] not in ["Eng", "HR"]:
+        return False
+    return True
+
+eligible = list(filter(is_eligible_employee, employees))
+print(" Eligible employees:", eligible)
+print("   → Sabko samajh aata hai, documentation bhi hai")
+
+# ====================================================================
+# PART 4: COMPLETE DECISION GUIDE (Yaad rakhne wali baat)
+# ====================================================================
+
+print("\n" + "=" * 50)
+print("PART 4: DECISION GUIDE - YAAD RAKHO")
+print("=" * 50)
+
+print("""
+LAMBDA USE KARO JAB:
+-------------------
+1. Kaam 1 line mein ho
+2. Simple operation ho (jaise square, double)
+3. map/filter/sorted ke saath use karna ho
+4. Quick inline kaam ho
+5. Documentation ki zaroorat nahi
+6. Reusable nahi banana
+
+REGULAR FUNCTION USE KARO JAB:
+----------------------------
+1. Multiple lines likhni ho
+2. Complex logic ho (zyada conditions)
+3. Documentation chahiye
+4. Reusable banana hai (dusri jagah bhi use karna)
+5. Error handling chahiye (try/except)
+6. Side effects ho (jaise print, file write)
+
+GOLDEN RULE (Zindagi ka mantra):
+--------------------------------
+"AGAR LAMBDA EK LINE SE ZYADA KA HAI,
+ TOH REGULAR FUNCTION USE KARO"
+
+READABILITY > SHORT CODE
+""")
+
+# ====================================================================
+# PART 5: REAL-LIFE EXAMPLES (Company mein kaise use karte hain)
+# ====================================================================
+
+print("=" * 50)
+print("PART 5: REAL-LIFE EXAMPLES")
+print("=" * 50)
+
+# Example 1: Employee sorting
+print("\n[EXAMPLE 1] Sorting employees by salary")
+print("-" * 40)
+
+employees2 = [
+    {"name": "Rohit", "salary": 50000},
+    {"name": "Priya", "salary": 70000},
+    {"name": "Amit", "salary": 45000}
+]
+
+# Lambda use karo - 1 line mein kaam
+sorted_by_salary = sorted(employees2, key=lambda emp: emp["salary"], reverse=True)
+print("Highest salary first:", sorted_by_salary)
+
+# Example 2: Filtering products
+print("\n[EXAMPLE 2] Filtering expensive products")
+print("-" * 40)
+
+products = [
+    {"name": "Laptop", "price": 80000},
+    {"name": "Phone", "price": 30000},
+    {"name": "Tablet", "price": 45000}
+]
+
+# Lambda use karo
+expensive = list(filter(lambda p: p["price"] > 40000, products))
+print("Expensive products:", expensive)
+
+# Example 3: Data transformation
+print("\n[EXAMPLE 3] Data transformation")
+print("-" * 40)
+
+prices = [100, 200, 300, 400]
+# Lambda use karo - 10% discount
+discounted = list(map(lambda p: p * 0.9, prices))
+print("Original:", prices)
+print("After 10% discount:", discounted)
+
+# Example 4: Complex business logic
+print("\n[EXAMPLE 4] Complex business logic")
+print("-" * 40)
+
+orders = [
+    {"id": 1, "items": [{"price": 100}, {"price": 200}]},
+    {"id": 2, "items": [{"price": 50}, {"price": 75}, {"price": 25}]},
+    {"id": 3, "items": [{"price": 300}]}
+]
+
+# Regular function use karo (complex hai)
+def calculate_order_total(order):
+    """Har order ka total calculate karo"""
+    total = 0
+    for item in order["items"]:
+        total += item["price"]
+    return total
+
+totals = []
+for order in orders:
+    totals.append(calculate_order_total(order))
+
+print("Order totals:", totals)
+
+print("\n" + "=" * 50)
+print("BAS YEHI HAI - SIMPLE AUR CLEAN")
+print("=" * 50)
+
+"""
+======================================================================
+SUMMARY (Ek line mein yaad rakho)
+======================================================================
+
+LAMBDA = Chhota dabba (1 line ka kaam)
+REGULAR = Bada dabba (complex kaam)
+
+Rule: Agar 1 line se zyada hai toh regular function use karo.
+======================================================================
+"""
+
+
+
+

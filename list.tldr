@@ -21,7 +21,7 @@
 			"com.tldraw.shape.text": 4,
 			"com.tldraw.shape.bookmark": 2,
 			"com.tldraw.shape.draw": 5,
-			"com.tldraw.shape.geo": 11,
+			"com.tldraw.shape.geo": 12,
 			"com.tldraw.shape.note": 13,
 			"com.tldraw.shape.line": 5,
 			"com.tldraw.shape.frame": 1,
@@ -201,16 +201,18 @@
 							"type": "paragraph"
 						}
 					]
-				}
+				},
+				"flipX": false,
+				"flipY": false
 			},
 			"parentId": "page:page",
 			"index": "aMtar",
 			"typeName": "shape"
 		},
 		{
-			"x": -40.60459587775641,
-			"y": -1115.2734622294206,
-			"z": 0.6970887225440894,
+			"x": 21.479139658412347,
+			"y": 47.70274972641606,
+			"z": 0.7938168608331436,
 			"meta": {},
 			"id": "camera:page:page",
 			"typeName": "camera"
@@ -306,7 +308,9 @@
 							]
 						}
 					]
-				}
+				},
+				"flipX": false,
+				"flipY": false
 			},
 			"parentId": "page:page",
 			"index": "a4kiz",
@@ -517,12 +521,12 @@
 			"typeName": "shape"
 		},
 		{
-			"editingShapeId": "shape:iXPgkroSq3MQz963yEdU3",
+			"editingShapeId": "shape:v2XajX9iFZzFtBqIVo0qW",
 			"croppingShapeId": null,
 			"selectedShapeIds": [
-				"shape:iXPgkroSq3MQz963yEdU3"
+				"shape:v2XajX9iFZzFtBqIVo0qW"
 			],
-			"hoveredShapeId": "shape:iXPgkroSq3MQz963yEdU3",
+			"hoveredShapeId": "shape:v2XajX9iFZzFtBqIVo0qW",
 			"erasingShapeIds": [],
 			"hintingShapeIds": [],
 			"focusedGroupId": null,
@@ -608,7 +612,9 @@
 							]
 						}
 					]
-				}
+				},
+				"flipX": false,
+				"flipY": false
 			},
 			"parentId": "page:page",
 			"index": "a3Ow2",
@@ -657,7 +663,9 @@
 							]
 						}
 					]
-				}
+				},
+				"flipX": false,
+				"flipY": false
 			},
 			"parentId": "page:page",
 			"index": "a7dOA",
@@ -706,7 +714,9 @@
 							]
 						}
 					]
-				}
+				},
+				"flipX": false,
+				"flipY": false
 			},
 			"parentId": "page:page",
 			"index": "a54cb",
@@ -755,7 +765,9 @@
 							]
 						}
 					]
-				}
+				},
+				"flipX": false,
+				"flipY": false
 			},
 			"parentId": "page:page",
 			"index": "a6p5X",
@@ -922,7 +934,9 @@
 							]
 						}
 					]
-				}
+				},
+				"flipX": false,
+				"flipY": false
 			},
 			"parentId": "page:page",
 			"index": "a2FNQ",
@@ -1171,10 +1185,7 @@
 		{
 			"followingUserId": null,
 			"opacityForNextShape": 1,
-			"stylesForNextShape": {
-				"tldraw:color": "violet",
-				"tldraw:geo": "ellipse"
-			},
+			"stylesForNextShape": {},
 			"brush": null,
 			"scribbles": [],
 			"cursor": {
@@ -1188,8 +1199,8 @@
 			"screenBounds": {
 				"x": 0,
 				"y": 0,
-				"w": 984.72216796875,
-				"h": 345.1388854980469
+				"w": 1134,
+				"h": 800
 			},
 			"insets": [
 				false,
@@ -1204,7 +1215,7 @@
 			"isChatting": false,
 			"highlightedUserIds": [],
 			"isFocused": true,
-			"devicePixelRatio": 1.440000057220459,
+			"devicePixelRatio": 2,
 			"isCoarsePointer": false,
 			"isHoveringCanvas": true,
 			"openMenus": [],
@@ -1229,7 +1240,7 @@
 			"props": {
 				"color": "violet",
 				"size": "m",
-				"w": 758.2482299804688,
+				"w": 750.6953125,
 				"font": "draw",
 				"textAlign": "start",
 				"autoSize": true,
@@ -1308,7 +1319,7 @@
 							"content": [
 								{
 									"type": "text",
-									"text": "List Mutable hai = >mtlb ye h ki hume usey change kr skte h"
+									"text": "List Mutable hai =>mtlb ye h ki hume usey change kr skte h"
 								}
 							]
 						},
@@ -1334,7 +1345,47 @@
 											"content": [
 												{
 													"type": "text",
-													"text": "Naya Add kro 2. Purana Delete kRo  3. Update kro  "
+													"text": "Naya Add kro"
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "listItem",
+									"attrs": {
+										"dir": "auto"
+									},
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": " Purana Delete kRo "
+												}
+											]
+										}
+									]
+								},
+								{
+									"type": "listItem",
+									"attrs": {
+										"dir": "auto"
+									},
+									"content": [
+										{
+											"type": "paragraph",
+											"attrs": {
+												"dir": "auto"
+											},
+											"content": [
+												{
+													"type": "text",
+													"text": "  Update kro  "
 												}
 											]
 										}

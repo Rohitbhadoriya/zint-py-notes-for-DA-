@@ -10,7 +10,7 @@ height = 5.8  # Float variable
 
 # Pizaa Order Details
 user_id = 234
-user_name = "Falguni Tayal"
+user_name = "Rohit Bhadauriya"
 pizza_type = "Margherita"
 pizza_size = "Medium"
 pizza_price = 12.99  # Float variable
@@ -122,6 +122,6 @@ print(a)
 
 
 besty_name = "Riya"
-besty_dushman = "Mansee"
+besty_dushman = "Rohit"
 besty_money = 12345
 dollar_in = 2.6

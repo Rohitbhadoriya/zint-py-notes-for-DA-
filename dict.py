@@ -12,20 +12,20 @@ print(phonebook)
 
 # Why Dict Exists 
 
-names = ["Rohit","Falguni","Kanchan","Deeksha","Punisha","Arpita","Archit","Mohit"]
-ages = [30,27,31,30,32,32,30,31]
-city = ["Gwalior","London","California","Delhi","Canda","Punjab","Chennai","Gwalior"]
+names = ["Rohit","Kanchan","Deeksha","Punisha","Arpita","Archit","Mohit"]
+ages = [30,27,31,30,32,32,31]
+city = ["Gwalior","California","Delhi","Canda","Punjab","Chennai","Gwalior"]
 archit_index = names.index("Archit")
 # print(archit_index)
 archit_age = ages[archit_index]
 print(archit_age)
 
 
-# sloutions with dictonary
+# solutions with dictonary
 
 dost = {
     "Rohit":{"age":25,"city":"Gwalior"},
-    "Falguni":{"age":27,"city":"London"},
+    "Anchal":{"age":27,"city":"London"},
     "Kanchan":{"age":31,"city":"California"}
 }
 
@@ -57,7 +57,7 @@ api_response = {
 }
 
 gropued_data = {
-    "fruits":{"apple","banana","grapess"},
+    "fruits":{"apple","banana","grapes"},
     "veggies":{"carrot","raddish"}
 }
 
@@ -72,7 +72,7 @@ for i in range(50):
 # Memory is very limited
 # Dict takes more memory than list
 
-# Youu need mathmatical operations
+# you need mathmatical operations
 # (sum, average,etc. on values only)
 
 
@@ -139,6 +139,7 @@ students = {
     "course": "Full Stack",
     "is_active":True
 }
+
 print(students)
 print(students["name"])
 
@@ -259,8 +260,8 @@ print(swapped)
 # their corresponding elements into an iterator of tuples. 
 # It acts like a physical zipper, locking matching elements together by their index
 
-names = ["Rohit", "Falguni","Deeksha"]
-ages = [29,26,29]
+names = ["Rohit","umang","Deeksha"]
+ages = [28,19,29]
 final = {name:age for name,age in zip(names,ages)}
 print(final)
 
@@ -337,7 +338,7 @@ print(nested)
 convert_dict = dict([["name","Deeksha"],["age",25],["city","Gwalior"]])
 print(convert_dict)
 # From list of tuples
-convert_tuples = [("name","Falguni"),("age",25),("city","Gwalior")]
+convert_tuples = [("name","umang"),("age",19),("city","Gwalior")]
 change_dict  = dict(convert_tuples)
 print(change_dict)
 # From Zip
@@ -397,23 +398,23 @@ print(users_data1["address"]["zip"])
  
 student_data1 = {
     
-    "name":"Annu Sharma Pagal",
-    "age":25,
-    "city":"Datia"
+    "name":"unnati Sharma",
+    "age":17,
+    "city":"gwalior"
 }
-annu_city = student_data1.get("city")
-print(annu_city)
+unnati_city = student_data1.get("city")
+print(unnati_city)
 # Basic usage: Missing key returns None
-annu_phone = student_data1.get("phone")
-print(annu_phone)
+unnati_phone = student_data1.get("phone")
+print(unnati_phone)
 
 # with default key  
-annu_phonedevalur = student_data1.get("phone","Not Available")
-print(annu_phonedevalur)
+unnati_phonedevalur = student_data1.get("phone","Not Available")
+print(unnati_phonedevalur)
 
 # with default for existing key 
-annu_city1 = student_data1.get("city","Not Available")
-print(annu_city1)
+unnati_city1 = student_data1.get("city","Not Available")
+print(unnati_city1)
 
 # Safe nested access (Chained.get())
 user_data = {

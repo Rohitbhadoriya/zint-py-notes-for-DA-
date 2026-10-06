@@ -29,7 +29,7 @@ print(type (myset))
 myset1 = {
     "Rohit",
     "Sohan",
-    "ANchal",
+    "Anchal",
     "Subh",
     25,
     28,
@@ -50,7 +50,7 @@ print(set3)
 
 
 # Constructor Method
-thisset1 = set(("Kanchan","Falguni","Deeksha","Swati"))
+thisset1 = set(("Kanchan","Deeksha","Swati"))
 print(type(thisset1))
 print("Swati" in thisset1)
 print("Rohit" not in thisset1)
@@ -175,3 +175,4 @@ print("kucku", python.difference(javascript))
 
 # 4. Total unique students
 print("sab", python.union(javascript, react))
+

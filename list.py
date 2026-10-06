@@ -149,7 +149,7 @@ print(sortedbills2)
 # sort() or sorted mein diiference kya h
 # sort() orginial list ko changed krta h or none return krta h .
 # sorted() nayi list return krta h or original unchanged rhti h 
-
+ 
 
 
 # reverese
@@ -232,7 +232,7 @@ for high in iterate:
         high_bills.append(high)
 print(high_bills)
 
-list2345 = ["Rohit", "Falguni", "Rohit", "Falguni", "Rohit", "Falguni","Shyam", "Ramesh", "Deeksha"]
+list2345 = ["Rohit","Anchal", "Rohit", "Rohit", "Shyam", "Ramesh", "Deeksha"]
 
 list23456=[]
 for sita in list2345:
@@ -296,6 +296,7 @@ print(above_average)
 str_bills = ["200","300","400","500"]
 int_bills = [int(bill) for bill in str_bills]
 print(int_bills)
+
 
 
 
@@ -367,10 +368,10 @@ print(loop1)
 
 # strip
 var_name = "                 Hello, World!"
-# print(var_name)
+print("mein bina split se chl rha hu",var_name)
 # print(var_name.strip())
 var_name2 = var_name.strip()
-print(var_name2)
+print("mein split hu",var_name2)
 
 # upper/lower()
 print(var_name2.upper())
@@ -384,7 +385,7 @@ print(var_name3.title())
 
 # split()
 var_name4 = "Hello, World! Welcome to Python."
-print(var_name4.split())
+print("mein split hu", var_name4.split())
 var_name5 = "apple,banana,cherry"
 print(var_name5.split(","))
 

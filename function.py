@@ -92,7 +92,7 @@ value_set("Sohan")
 # final1 = total1 + tax1-discount1
 # print(final1)
 
-# Ye hum jyda use nhi krnge kyu ki is se sqeuenxes ka pota nhi chlta h 
+# Ye hum jyda use nhi krnge kyu ki is se sqeuences ka pta nhi chlta h 
 def create_user(name,age,gender):
     return{
         "name":name,
@@ -103,7 +103,7 @@ user12 = create_user("Rohit",25,"Male")
 print("mein user12", user12)
 
 
-# anoter method cretae user 
+# another method cretae user 
 def another_user(name,age,std):
     return{
         "name":name,
@@ -128,7 +128,7 @@ def anotgher_item(item,items=[]):
 print(anotgher_item("rohit"))
 print(anotgher_item("Sejal ko bhoot a gaye"))
 print(anotgher_item("khushi puch puch ke pareshan"))
-print(anotgher_item("master puch puch ke pareshan bhoot naam kya"))
+print(anotgher_item("master puch puch ke pareshan bhut naam kya"))
 # print(anotgher_item())
 
 def an_items(item,items=None):
